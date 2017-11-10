@@ -1,0 +1,50 @@
+@count: 10;
+
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+img {
+	max-width: 100%;
+}
+
+.coords {
+    width: 60px;
+    height: 40px;
+    background: lightblue;
+    position: absolute;
+    top: 20px;
+    left: 30px;
+}
+
+
+.wrapper {
+	width: 100%;
+	margin: 0 auto;
+	margin-top: 150px;
+	height: 1000px;
+	overflow: hidden;
+	.slider {
+	width: calc(100%*@count);
+	display: flex;
+	justify-content: space-between;
+	
+	.mixin(@count);
+		.image {
+			height: 1000px; 
+			margin: 0;
+			width: calc(100%/@count);
+		}
+	}
+}
+
+.mixin(@n) when (@n > 0){
+
+	.img-@{n} {
+		background-color: spin(red, @n * 60);
+	}
+	.mixin(@n - 1);
+}
+
